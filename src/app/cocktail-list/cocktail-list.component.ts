@@ -14,7 +14,8 @@ export class CocktailListComponent implements OnInit {
   constructor(public cocktailService : CocktailService ) { }
 
   ngOnInit() :void{
-    this.cocktails = this.cocktailService.getCocktails();
+    this.cocktailService.getCocktails().subscribe(cocktailFromJason => {
+      this.cocktails = Object.values(cocktailFromJason);
+      });
   }
-
 }
